@@ -1,78 +1,92 @@
 //A
-/*
-const addTheWordCool = function(array){
-    return array + array.push("cool");
-}
-console.log("Add cool:", addTheWordCool(["nice", "awesome", "tof"]));
-// resultaat: ["nice", "awesome", "tof", "cool"]
-*/
-/*
-const addTheWordCool = ["nice", "awesome", "tof"] {
-    return addTheWordCool.push("cool");
-}
 
-console.log("Add cool:", addTheWordCool();
-// resultaat: ["nice", "awesome", "tof", "cool"]
-*/
+const addTheWordCool = function(array) {
+    array.push("cool");
+    return array;
+  };
+  
+  console.log("Add cool:", addTheWordCool(["nice", "awesome", "tof"]));
+
 //B
-const amountOfElementsInArray = function (array) {
-    return array.length;
-} 
 
-console.log(amountOfElementsInArray(['appels', 'peren', 'citroenen'])); 
-  // 3
+const amountOfElementsInArray = function(array) {
+    return array.length;
+  };
+  console.log(amountOfElementsInArray(["appels", "peren", "citroenen"]));
 
 //C
-/*
-const selectBelgiumFromBenelux = function (array) {
-    return array.shift;
-}
-
-console.log(selectBelgiumFromBenelux[0](["Belgie", "Nederland", "Luxemburg"])); 
-// resultaat: "Belgie" 
-*/
-
-const selectBelgiumFromBenelux = ["Belgie", "Nederland", "Luxemburg"]
-const first = selectBelgiumFromBenelux[0]
-
-console.log(first); 
-// resultaat: "Belgie" 
-
+// Er zijn 3 verschillende oplossingen (misschien zelfs meer! Kun je er nog 1 bedenken?)
+const selectBelgiumFromBenelux = function(array) {
+    return array[0];
+  };
+  
+  // OF
+  const selectBelgiumFromBeneluxShift = function(array) {
+    return array.shift();
+  };
+  
+  // OF
+  const selectBelgiumFromBeneluxSlice = function(array) {
+    return array.slice(0, 1);
+  };
+  
+  console.log(selectBelgiumFromBenelux(["Belgie", "Nederland", "Luxemburg"])); // resultaat: "Belgie"
+  console.log(
+    selectBelgiumFromBeneluxShift(["Belgie", "Nederland", "Luxemburg"])
+  ); // resultaat: "Belgie"
+  console.log(
+    selectBelgiumFromBeneluxSlice(["Belgie", "Nederland", "Luxemburg"])
+  ); // resultaat: ["Belgie"]
+  // Let op! Slice retourneert dus een nieuwe array in plaats van alleen het element. Wil je dat?
 
 //D
-const lastElementInArray = function (array) {
-    return array.findInde(3);
-}
-
-
-console.log(lastElementInArray(["Haas", "Cavia", "Kip", "Schildpad"])); 
-  // resultaat: "Schildpad"
+const lastElementInArray = function(array) {
+    return array.pop();
+  };
+  
+  const lastElementInArray2 = function(array) {
+    return array[array.lenght - 1];
+  };
+  console.log(lastElementInArray(["Haas", "Cavia", "Kip", "Schildpad"])); // resultaat: "Schildpad"
+  console.log(lastElementInArray2(["Haas", "Cavia", "Kip", "Schildpad"])); // resultaat: "Schildpad"
 
 //E
-const presidents = ["Trump", "Obama", "Bush", "Clinton"] 
-  
+const presidents = ["Trump", "Obama", "Bush", "Clinton"];
+
 const impeachTrumpSlice = function(array) {
- return presidents.slice;
-}
+  //zoals je hieronder ziet muteert .slice methode niet de bestaande array, maar retourneert een nieuwe die we opslaan in een nieuwe variabele/
+  const newArray = array.slice(1, 4);
+  console.log("Nieuwe array:", newArray, "De onaangetaste array", array);
+  return newArray;
+};
+
 const impeachTrumpSplice = function(array) {
-return presidents.splice;
-}
+  const removedElement = array.splice(0, 1);
+  console.log(
+    "removed element:",
+    removedElement,
+    "De mutated array, Trump is missing:",
+    array
+  );
+  return array;
+};
 
 console.log(impeachTrumpSlice(presidents)); // ["Obama", "Bush", "Clinton"]
 console.log(impeachTrumpSplice(presidents)); // ["Obama", "Bush", "Clinton"]
 
 //F
-const stringsTogether = function (array) {
-    return array.join;
-}
-
-console.log(stringsTogether(['Winc', 'Academy', 'is', 'leuk', ';-}'])) 
-//resultaat: "Winc Academy is leuk ;-}"
+const stringsTogether = function(array) {
+    return array.join(" ");
+  };
+  
+  console.log(stringsTogether(["Winc", "Academy", "is", "leuk", ";-}"]));
+  //resultaat: "Winc Academy is leuk ;-}"
 
 //G
-const combineArrays = function (array) {
-    return array.concat;
-}
-
-console.log(combineArrays([1,2,3], [4,5,6]) )
-// resultaat: [1,2,3,4,5,6]
+const combineArrays = function(array1, array2) {
+    return array1.concat(array2);
+  };
+  
+  console.log(combineArrays([1, 2, 3], [4, 5, 6]));
+  console.log(combineArrays(["hoi", "hey", "hallo"], [4, 5, 6]));
+  // result should be [1,2,3,4,5,6]
